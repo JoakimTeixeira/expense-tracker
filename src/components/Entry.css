@@ -1,0 +1,8 @@
+.close-button {
+	margin-left: 1rem;
+	display: none;
+}
+
+.entry-item:hover .close-button {
+	display: block;
+}

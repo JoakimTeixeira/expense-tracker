@@ -2,7 +2,7 @@ import React from 'react'
 
 const Form = () => {
 	return (
-		<section className="border border-info p-4 mb-3">
+		<section className="border border-info p-4 mb-4">
 			<form>
 				<div className="form-group">
 					<label htmlFor="description">Description</label>
