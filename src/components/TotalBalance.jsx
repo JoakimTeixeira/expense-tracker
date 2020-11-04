@@ -4,7 +4,7 @@ import { AppContext } from '../containers/AppContext'
 const TotalBalance = () => {
 	const { entries } = useContext(AppContext)
 	const sum = entries.reduce((total, entry) => {
-		return parseInt(total + entry.amount)
+		return parseFloat(total) + parseFloat(entry.amount)
 	}, 0)
 
 	return (

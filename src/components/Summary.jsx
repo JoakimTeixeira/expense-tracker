@@ -14,7 +14,7 @@ const Summary = () => {
 
 	const sumEntries = (entries) => {
 		return entries.reduce((total, entry) => {
-			return parseInt(total + entry.amount)
+			return parseFloat(total) + parseFloat(entry.amount)
 		}, 0)
 	}
 
