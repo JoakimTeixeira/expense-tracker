@@ -3,11 +3,13 @@ import { AppContext } from '../containers/AppContext'
 
 const TotalBalance = () => {
 	const { entries } = useContext(AppContext)
-	console.log(entries)
+	const sum = entries.reduce((total, entry) => {
+		return parseInt(total + entry.amount)
+	}, 0)
 
 	return (
 		<header className="mb-5">
-			<h1 className="display-4 text-center">$100</h1>
+			<h1 className="display-4 text-center">${sum}</h1>
 		</header>
 	)
 }
