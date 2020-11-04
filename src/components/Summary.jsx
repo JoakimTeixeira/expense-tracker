@@ -1,6 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../containers/AppContext'
 
 const Summary = () => {
+	const { entries } = useContext(AppContext)
+
+	const filterEntries = (entryType) => {
+		if (entryType === 'income') {
+			return entries.filter((entry) => entry.amount >= 0)
+		} else if (entryType === 'expense') {
+			return entries.filter((entry) => entry.amount < 0)
+		}
+	}
+
+	const sumEntries = (entries) => {
+		return entries.reduce((total, entry) => {
+			return parseInt(total + entry.amount)
+		}, 0)
+	}
+
+	const totalIncome = () => {
+		return sumEntries(filterEntries('income'))
+	}
+
+	const totalExpense = () => {
+		return sumEntries(filterEntries('expense'))
+	}
+
 	return (
 		<section className="row mb-3">
 			<article className="col-sm-6 mb-3">
@@ -11,7 +36,7 @@ const Summary = () => {
 							className="card-text text-center text-success"
 							style={{ fontSize: '1.5rem' }}
 						>
-							+150
+							{totalIncome()}
 						</h6>
 					</div>
 				</div>
@@ -25,7 +50,7 @@ const Summary = () => {
 							className="card-text text-center text-danger"
 							style={{ fontSize: '1.5rem' }}
 						>
-							-50
+							{totalExpense()}
 						</h6>
 					</div>
 				</div>
