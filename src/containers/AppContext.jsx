@@ -10,7 +10,13 @@ export const AppContextProvider = ({ children }) => {
 		{ id: 4, description: 'Book', amount: -25 },
 	])
 
+	const handleDelete = (id) => {
+		setEntries(entries.filter((entry) => entry.id !== id))
+	}
+
 	return (
-		<AppContext.Provider value={{ entries }}>{children}</AppContext.Provider>
+		<AppContext.Provider value={{ entries, handleDelete }}>
+			{children}
+		</AppContext.Provider>
 	)
 }

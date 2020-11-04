@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from '../containers/AppContext'
 import './Entry.css'
 
-const Entry = ({ description, amount }) => {
+const Entry = ({ id, description, amount }) => {
+	const { handleDelete } = useContext(AppContext)
+
 	return (
 		<>
 			<li
@@ -10,7 +13,7 @@ const Entry = ({ description, amount }) => {
 				}`}
 			>
 				{description}
-				<button className="close-button close">
+				<button onClick={() => handleDelete(id)} className="close-button close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<span className="float-right">

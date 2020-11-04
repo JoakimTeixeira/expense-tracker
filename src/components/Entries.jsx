@@ -15,7 +15,14 @@ const Entries = () => {
 					entries.map((entry) => {
 						const { id, description, amount } = entry
 
-						return <Entry key={id} description={description} amount={amount} />
+						return (
+							<Entry
+								key={id}
+								id={id}
+								description={description}
+								amount={amount}
+							/>
+						)
 					})}
 			</article>
 		</section>
